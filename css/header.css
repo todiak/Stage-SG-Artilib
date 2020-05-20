@@ -152,3 +152,10 @@ span.menu-toggle-icon:after {
 		  display: flex;
 	}
 }
+
+@media only screen and (max-width: 400px) {
+
+	.menu-user ul li a {
+		font-size: 10px;
+	}
+}

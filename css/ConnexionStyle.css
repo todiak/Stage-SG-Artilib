@@ -59,6 +59,7 @@ h2{
     padding-top: 5%;
     color:#3b7cf5;
     display:block;
+    margin-left: 40px;
 }
 #SeCo:hover{
     color:#3b7cf5;
@@ -105,6 +106,10 @@ h2{
     #SeCo{
         margin-top: 40px;
         margin-bottom: 40px;
+    }
+
+    #ResterCo{
+        margin-left: 20px;
     }
 
 }

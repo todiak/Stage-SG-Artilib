@@ -142,7 +142,7 @@ form{
       width: 100%;
       text-align: center;
 }
-.fullbox h1{
+.fullbox .info-covid{
 
 	font-size: 60px;
 	font-weight: 600;
@@ -220,11 +220,15 @@ form{
   text-decoration: none;
 }
 
-@media screen and (max-width: 660px){
+@media only screen and (max-width: 660px){
 
     
-    .b1,.b2,.b3,.b4{
+  .b1,.b2,.b3,.b4{
     flex-basis: 100%;
+  }
+
+  .container .fullbox .info-covid{
+    font-size: 30px;
   }
   
 }
