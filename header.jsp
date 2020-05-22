@@ -44,7 +44,7 @@
                 <div class="menu-right">
                     <ul>
                         <li id="menu-user-li"><a href="./index.jsp" class="menu-link"><i class="fas fa-home"></i> Accueil</a></li>
-                        <li id="menu-user-li"><a href="#" class="menu-link"><i class="fas fa-tools"></i> Vous êtes un artisan?</a></li>
+                        <li id="menu-user-li"><a href="./inscription_artisan.jsp" class="menu-link"><i class="fas fa-tools"></i> Vous êtes un artisan?</a></li>
                         <li id="menu-user-li"><a href="./inscription.jsp" class="menu-link"><i class="fas fa-user-plus"></i> S'inscrire</a></li>
                         <!-- <li id="menu-user-li"><a href="#" class="menu-link"><i class="far fa-calendar-check"></i> Mes rendez-vous</a></li> -->
                     </ul>
