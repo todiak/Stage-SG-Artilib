@@ -20,9 +20,9 @@
         <div id="FormSize">
                 <h2>Connexion</h2>
                 <div id="connform">
-                    <form method="POST" action="./">
-                        <input id="identifiant" placeholder="Adresse email" >
-                        <input id="motdepasse" type="password" placeholder="Mot de Passe">
+                    <form method="POST" action="LoginServlet">
+                        <input id="identifiant" name="mail" placeholder="Adresse email" >
+                        <input id="motdepasse" name="mdp" type="password" placeholder="Mot de Passe">
                         <div id="ResterCo">
                             <input type="checkbox" id="ButCo" name="Rester connecté ?">
                             <label for="ResterCo">Rester connecté</label>

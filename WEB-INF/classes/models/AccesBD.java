@@ -5,7 +5,7 @@ import java.sql.DriverManager;
 
 public class AccesBD {
 	
-	private static String url_jdbc = "jdbc:mysql://localhost/artilib?useUnicode=yes&characterEncoding=UTF-8";
+	private static String url_jdbc = "jdbc:mysql://localhost/artilib?useUnicode=yes&characterEncoding=UTF-8&autoReconnect=true&useSSL=false";
 	private static String login = "root";
 	private static String pwd = "";
 

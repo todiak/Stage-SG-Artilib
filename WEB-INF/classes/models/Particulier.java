@@ -1,16 +1,15 @@
 package models;
 
-public class Particulier extends Utilisateur {
+public class Particulier extends UtilisateurData {
 	private int idParticulier;
 	private String nomParticulier; 
 	private String prenomParticulier;
 	
-	public Particulier(int idUtilisateur, String loginUtilisateur, String mdpUtilisateur, String typeUtilisateur,
+	public Particulier(int idUtilisateur, String mdpUtilisateur, String typeUtilisateur,
 			String mailUtilisateur, int telUtilisateur, int codePostalUtilisateur, String villeUtilisateur,
 			String adresseUtilisateur, int idParticulier, String nomParticulier, String prenomParticulier) {
-		super(idUtilisateur, loginUtilisateur, mdpUtilisateur, typeUtilisateur, mailUtilisateur, telUtilisateur,
+		super(idUtilisateur, mdpUtilisateur, typeUtilisateur, mailUtilisateur, telUtilisateur,
 				codePostalUtilisateur, villeUtilisateur, adresseUtilisateur);
-		// TODO Auto-generated constructor stub
 		
 		this.idParticulier = idParticulier;
 		this.nomParticulier = nomParticulier;
@@ -19,20 +18,18 @@ public class Particulier extends Utilisateur {
 
 	@Override
 	public Object[] data() {
-		// TODO Auto-generated method stub
-		Object[] data = new Object[12];
+		Object[] data = new Object[11];
 		data[0] = getIdUtilisateur();
-		data[1] = getLoginUtilisateur();
-		data[2] = getMdpUtilisateur();
-		data[3] = getTypeUtilisateur();
-		data[4] = getMailUtilisateur();
-		data[5] = getTelUtilisateur();
-		data[6] = getCodePostalUtilisateur();
-		data[7] = getVilleUtilisateur();
-		data[8] = getAdresseUtilisateur();
-		data[9] = idParticulier;
-		data[10] = nomParticulier;
-		data[11] = prenomParticulier;
+		data[1] = getMdpUtilisateur();
+		data[2] = getTypeUtilisateur();
+		data[3] = getMailUtilisateur();
+		data[4] = getTelUtilisateur();
+		data[5] = getCodePostalUtilisateur();
+		data[6] = getVilleUtilisateur();
+		data[7] = getAdresseUtilisateur();
+		data[8] = idParticulier;
+		data[9] = nomParticulier;
+		data[10] = prenomParticulier;
 		return data;
 	}
 
