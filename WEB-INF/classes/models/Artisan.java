@@ -5,21 +5,19 @@ public class Artisan extends Utilisateur {
 	public Artisan(int idUtilisateur, String loginUtilisateur, String mdpUtilisateur, String typeUtilisateur,
 			String mailUtilisateur, int telUtilisateur, int codePostalUtilisateur, String villeUtilisateur,
 			String adresseUtilisateur, int idArtisan, String denominationEntrepriseArtisan, String secteurArtian,
-			String numSiretArtisan, int idUtilisateurArtisan) {
+			String numSiretArtisan) {
 		super(idUtilisateur, loginUtilisateur, mdpUtilisateur, typeUtilisateur, mailUtilisateur, telUtilisateur,
 				codePostalUtilisateur, villeUtilisateur, adresseUtilisateur);
 		this.idArtisan = idArtisan;
 		this.denominationEntrepriseArtisan = denominationEntrepriseArtisan;
 		this.secteurArtian = secteurArtian;
 		this.numSiretArtisan = numSiretArtisan;
-		this.idUtilisateurArtisan = idUtilisateurArtisan;
 	}
 	
 	private int idArtisan;
 	private String denominationEntrepriseArtisan;
 	private String secteurArtian;
 	private String numSiretArtisan;
-	private int idUtilisateurArtisan;
 	
 	@Override
 	public Object[] data() {
