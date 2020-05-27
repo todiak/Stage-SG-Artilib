@@ -1,6 +1,8 @@
 package models;
 
-public abstract class UtilisateurData implements site_interface.Utilisateur{
+import site_interface.Utilisateur;
+
+public abstract class UtilisateurData implements Utilisateur {
 	
 	private int idUtilisateur;
 	private String mdpUtilisateur;
@@ -25,7 +27,18 @@ public abstract class UtilisateurData implements site_interface.Utilisateur{
 		this.adresseUtilisateur = adresseUtilisateur;
 	}
 	
-	public abstract Object[] data();
+	public Object[] data() {
+		Object[] data = new Object[8];
+		data[0] = idUtilisateur;
+		data[1] = mdpUtilisateur;
+		data[2] = typeUtilisateur;
+		data[3] = mailUtilisateur;
+		data[4] = telUtilisateur;
+		data[5] = codePostalUtilisateur;
+		data[6] = villeUtilisateur;
+		data[7] = adresseUtilisateur;
+		return data;
+	}
 	
 	public boolean isArtisan() {
 		if(!this.typeUtilisateur.equals("arti")) {

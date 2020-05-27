@@ -70,11 +70,12 @@
 }
 
 .menu-user ul li ul li .dropdown-menu-link {
-  color : #3b7cf5;
-  text-align: center;
-  border: 1px solid #3b7cf5;
+  	color : #3b7cf5;
+  	text-align: center;
+  	border: 1px solid #3b7cf5;
 	transition: all 0.3s ease-in-out;
 	background-color: #fff;
+	font-size: 14px;
 }
 
 .menu-user ul li ul li .dropdown-menu-link:hover {
