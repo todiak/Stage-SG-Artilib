@@ -14,7 +14,7 @@ public class Particulier extends UtilisateurData {
 		this.idParticulier = idParticulier;
 		this.nomParticulier = nomParticulier;
 		this.prenomParticulier = prenomParticulier;
-	}
+	}  
 
 	@Override
 	public Object[] data() {

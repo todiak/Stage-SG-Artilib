@@ -4,3 +4,4 @@ public interface Utilisateur {
 
 	public boolean isArtisan();
 }
+   

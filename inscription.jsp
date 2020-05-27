@@ -25,22 +25,23 @@
 
         <div class="form-inscription">
 
-            <form class="inscrire" method="post" action="">
+            <form class="inscrire" method="post" action="InscriptionServlet">
                 <label id="title">Nouveau sur Artilib ?</label>
                 
                 <div class="saisi">
-                    <label class="saisi-gauche"> <input type="text" name="" placeholder="Nom" > * </label>
-                    <label class="saisi-droite"> <input type="text" name="" placeholder="Prénom"> * </label>
+                    <label class="saisi-gauche"> <input type="text" name="nomUser" placeholder="Nom" > * </label>
+                    <label class="saisi-droite"> <input type="text" name="prenomUser" placeholder="Prénom"> * </label>
                 </div>
                 
-                <label> <input type="text" name="" placeholder="Adresse email"> * </label>
-                <label> <input type="text" name="" placeholder="Mot de passe"> * </label>
-                <label> <input type="text" name="" placeholder="Confirmer le mot de passe"> </label>
-                <label> <input type="text" name="" placeholder="Numéro de téléphone"> * </label>
+                <label> <input type="text" name="mail" placeholder="Adresse email"> * </label>
+                <label> <input type="text" name="mdp" placeholder="Mot de passe"> * </label>
+                <label> <input type="text" name="mdpC" placeholder="Confirmer le mot de passe"> </label>
+                <label> <input type="text" name="tel" placeholder="Numéro de téléphone"> * </label>
                 <div class="saisi">
-                    <label class="saisi-gauche"> <input type="text" name="" placeholder="Code postale"> </label>
-                    <label class="saisi-droite"> <input type="text" name="" placeholder="Ville" > </label>
+                    <label class="saisi-gauche"> <input type="text" name="cp" placeholder="Code postale"> </label>
+                    <label class="saisi-droite"> <input type="text" name="ville" placeholder="Ville" > </label>
                 </div>
+                <label> <input type="text" name="adresse" placeholder="Adresse"> </label>
                 <label id="condition">
                     <input type="checkbox" name="a">
                     J'accepte les 

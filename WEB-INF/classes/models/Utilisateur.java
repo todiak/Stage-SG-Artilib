@@ -11,7 +11,7 @@ public abstract class Utilisateur {
 	private int codePostalUtilisateur;
 	private String villeUtilisateur;
 	private String adresseUtilisateur;
-	
+	  
 	public Utilisateur(int idUtilisateur, String loginUtilisateur, String mdpUtilisateur, String typeUtilisateur,
 			String mailUtilisateur, int telUtilisateur, int codePostalUtilisateur, String villeUtilisateur,
 			String adresseUtilisateur) {
