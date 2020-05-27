@@ -12,7 +12,7 @@ public abstract class UtilisateurData implements Utilisateur {
 	private int codePostalUtilisateur;
 	private String villeUtilisateur;
 	private String adresseUtilisateur;
-	
+	  
 	public UtilisateurData(int idUtilisateur, String mdpUtilisateur, String typeUtilisateur,
 			String mailUtilisateur, int telUtilisateur, int codePostalUtilisateur, String villeUtilisateur,
 			String adresseUtilisateur) {

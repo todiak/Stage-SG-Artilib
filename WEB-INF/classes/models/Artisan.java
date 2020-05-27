@@ -13,7 +13,7 @@ public class Artisan extends UtilisateurData {
 		this.secteurArtisan = secteurArtian;
 		this.numSiretArtisan = numSiretArtisan;
 	}
-	
+	   
 	private int idArtisan;
 	private String denominationEntrepriseArtisan;
 	private String secteurArtisan;

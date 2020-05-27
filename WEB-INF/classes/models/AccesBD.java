@@ -11,7 +11,7 @@ public class AccesBD {
 
 	
 	public static Connection connexionBD() throws Exception {
-		
+		   
 		Class.forName("com.mysql.jdbc.Driver");
 		
 		Connection conn = DriverManager.getConnection(url_jdbc, login, pwd);

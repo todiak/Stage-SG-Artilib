@@ -5,3 +5,4 @@ public interface Utilisateur {
 	Object[] data();
 	boolean isArtisan();
 }
+   
