@@ -50,7 +50,7 @@
 		
                               <div class="content">
                                     <h2>Prenez un rendez-vous en consultation physique ou consultation vidéo</h2>
-                                    <form action="/action_page.php">
+                                    <form action="/recherche.jsp">
                                     <input class="premier" type="text" placeholder="Recherche" name="localisation">
                                     <input class="second" type="text" placeholder="Où ?" name="search">
                                     <button type="submit">Rechercher</i></button>
