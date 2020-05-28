@@ -9,7 +9,7 @@
     <title>Header</title>
 
     <!--  CSS  -->
-
+    <link href="css/normalize.css" rel="stylesheet">
     <link rel="stylesheet" href="./css/header.css">
 
     <!--  Font awesome CSS  -->

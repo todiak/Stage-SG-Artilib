@@ -9,7 +9,7 @@
       <title>Artilib | Home</title><!-- modifier le titre-->
 
       <!--  CSS  -->
-      <link href="css/normalize.css" rel="stylesheet">
+      
       <link href="css/style.css" rel="stylesheet">
       
       <!--  Font awesome CSS  -->
