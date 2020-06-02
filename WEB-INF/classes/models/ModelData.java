@@ -3,6 +3,8 @@ package models;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.List;
 
 import site_interface.Model;
 import site_interface.PersistentModel;
@@ -169,7 +171,62 @@ public class ModelData implements PersistentModel {
 		}
 	}
 	
-	
+	@Override
+	public List<Utilisateur> rechercheArti(String localisation, String search) {
+		List<Utilisateur> listeArti = new ArrayList<Utilisateur>();
+		
+		String reqRechArti = "SELECT * FROM artisan INNER JOIN utilisateur ON artisan.IdUti = utilisateur.IdUti WHERE (artisan.DenominationEntrepriseArti LIKE ? OR artisan.SecteurArti LIKE ?) AND (utilisateur.CodepostaleUti LIKE ? OR utilisateur.VilleUti LIKE ? OR utilisateur.AdresseUti LIKE ?)";
+
+		
+		try {
+			Connection conn = AccesBD.connexionBD();	// Connexion a la base de données
+			PreparedStatement stmtRechArti = conn.prepareStatement(reqRechArti);
+			
+			// On affecte les paramètres de la requête
+			stmtRechArti.setString(1, "%" + localisation + "%");	
+			stmtRechArti.setString(2, "%" + localisation + "%");
+			stmtRechArti.setString(3, "%" + search + "%");
+			stmtRechArti.setString(4, "%" + search + "%");
+			stmtRechArti.setString(5, "%" + search + "%");
+			
+			ResultSet resRechArti = stmtRechArti.executeQuery();
+			
+			int idArti = 0;
+			String denominationArti = "";
+			String secteurArti = "";
+			String numSiretArti = "";
+			int idUti = 0;
+			String mdpUti = "";
+			String typeUti = "";
+			String mailUti = "";
+			int telUti = 0;
+			int codePostalUti = 0;
+			String villeUti = "";
+			String adresseUti = "";
+			
+			while(resRechArti.next()) {
+				idArti = resRechArti.getInt("IdArti");
+				denominationArti = resRechArti.getString("DenominationEntrepriseArti");
+				secteurArti = resRechArti.getString("SecteurArti");
+				numSiretArti = resRechArti.getString("NumSiretArti");
+				idUti = resRechArti.getInt("IdUti");
+				mdpUti = resRechArti.getString("MdpUti");
+				typeUti = resRechArti.getString("TypeUti");
+				mailUti = resRechArti.getString("MailUti");
+				telUti = resRechArti.getInt("TelUti");
+				codePostalUti = resRechArti.getInt("CodepostaleUti");
+				villeUti = resRechArti.getString("VilleUti");
+				adresseUti = resRechArti.getString("AdresseUti");
+				
+				listeArti.add(new Artisan(idUti, mdpUti, typeUti, mailUti, telUti, codePostalUti, villeUti, adresseUti, idArti, denominationArti, secteurArti, numSiretArti));
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return listeArti;
+	}
 
 
 }

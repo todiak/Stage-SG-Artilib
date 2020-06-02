@@ -1,5 +1,9 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ page import ="site_interface.Utilisateur"%>
+<%@ page import ="site_interface.Model"%>
+<%@ page import ="java.util.ArrayList"%>
+<%@ page import ="java.util.List"%>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html lang="fr">
@@ -24,31 +28,36 @@
             <button type="submit">Rechercher</button>
         </form>
         
-        <div id="nb-res">Nombre de résultat:</div>
+        <% 
+            List<Utilisateur> listeArti = new ArrayList<Utilisateur>();  
+            listeArti = (ArrayList<Utilisateur>) session.getAttribute("listeArti");
+            //listeArti = (ArrayList<Utilisateur>) Model.getInstance().rechercheArti((String)session.getAttribute("localisation"),(String)session.getAttribute("search"));
+
+            for (Utilisateur u : listeArti) {
+                int idUti = (int) u.data()[0];
+                String denominationArti = (String) u.data()[9];
+                int codePostaleUti = (int) u.data()[5];
+                String villeUti = (String) u.data()[6];
+                String adresseUti = (String) u.data()[7];
+
+                %>
+                <div id="resultat">
+            
+                    <a href="ProfilArtisan.jsp?<% out.println(idUti); %>" class="resume-art">
+                        <img class="img-res" src="./images/<% out.println(denominationArti); %>.jpg">
+                        <ul>
+                            <li><% out.println(denominationArti); %></li>
+                            <li><% out.println(adresseUti); %></li>
+                            <li><% out.println(villeUti); %></li>
+                            <li><% out.println(codePostaleUti); %></li>
+                        </ul>
+                    </a>
+                </div>
+                <%
+            }
+        %>
         
-        <div id="resultat">
-            <a href="" class="resume-art">
-                <img class="img-res" src="./images/instagram.png">
-                <ul>
-                    <li>aa</li>
-                    <li>aa</li>
-                </ul>
-            </a>
-            <a href="" class="resume-art">
-                <img class="img-res" src="./images/instagram.png">
-                <ul>
-                    <li>aa</li>
-                    <li>aa</li>
-                </ul>
-            </a>
-            <a href="" class="resume-art">
-                <img class="img-res" src="./images/instagram.png">
-                <ul>
-                    <li>aa</li>
-                    <li>aa</li>
-                </ul>
-            </a>
-        </div>
+        
     </body>
     <footer></footer>
 </html>
