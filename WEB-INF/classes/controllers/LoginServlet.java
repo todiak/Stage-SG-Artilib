@@ -46,7 +46,7 @@ public class LoginServlet extends HttpServlet {
 			session.setAttribute("sessionUtilisateur", user);
 			
 			if(user.isArtisan()) {
-				response.sendRedirect(request.getContextPath()+"/#"); //Page d'accueil pour bibliothecaire 
+				response.sendRedirect(request.getContextPath()+"/#"); //Page d'accueil pour un artisan
 			}
 			else {
 				response.sendRedirect(request.getContextPath()+"/index.jsp"); //Page d'accueil pour un particulier   		
@@ -54,7 +54,7 @@ public class LoginServlet extends HttpServlet {
 		}
 		else {
 			session.setAttribute("erreurLogin", "1");
-			response.sendRedirect(request.getContextPath()+"/index.jsp"); // page d'erreur
+			response.sendRedirect(request.getContextPath()+"/#");
 		}
 		
 		

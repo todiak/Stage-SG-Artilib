@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html lang="en">
 <head>
@@ -9,7 +9,7 @@
       <title>Artilib | Home</title><!-- modifier le titre-->
 
       <!--  CSS  -->
-      <link href="css/normalize.css" rel="stylesheet">
+      
       <link href="css/style.css" rel="stylesheet">
       
       <!--  Font awesome CSS  -->
@@ -50,11 +50,11 @@
 		
                               <div class="content">
                                     <h2>Prenez un rendez-vous en consultation physique ou consultation vidéo</h2>
-                                    <form action="/action_page.php">
+                                    <form action="RechercheServlet" method="post">
                                     <input class="premier" type="text" placeholder="Recherche" name="localisation">
                                     <input class="second" type="text" placeholder="Où ?" name="search">
-                                    <button type="submit">Rechercher</i></button>
-                              </form>
+                                    <button type="submit">Rechercher</button>
+                                    </form>
                               </div>
                         </div>
                   </div>

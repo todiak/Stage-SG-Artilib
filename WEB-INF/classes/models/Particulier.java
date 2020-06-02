@@ -33,4 +33,5 @@ public class Particulier extends UtilisateurData {
 		return data;
 	}
 
+
 }
