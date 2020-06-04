@@ -48,6 +48,7 @@ public class ModelData implements PersistentModel {
 				String villeUtilisateur = resUser.getString("VilleUti");
 				String adresseUtilisateur = resUser.getString("AdresseUti");
 				
+				
 				if(typeUtilisateur.equals("arti")) {
 					String reqGetArtisan = "SELECT * FROM artisan WHERE IdUti = ? ";
 					
@@ -62,9 +63,10 @@ public class ModelData implements PersistentModel {
 						String denominationEntrepriseArtisan = resArtisan.getString("DenominationEntrepriseArti");
 						String secteurArtisan = resArtisan.getString("SecteurArti");
 						String numSiretArtisan = resArtisan.getString("NumSiretArti");
+						String description = resUser.getString("Description");
 						
 						return new Artisan(idUtilisateur, mdpUtilisateur, typeUtilisateur, mailUtilisateur, telUtilisateur, codePostalUtilisateur,
-								villeUtilisateur, adresseUtilisateur, idArtisan, denominationEntrepriseArtisan, secteurArtisan, numSiretArtisan);
+								villeUtilisateur, adresseUtilisateur, idArtisan, denominationEntrepriseArtisan, secteurArtisan, numSiretArtisan, description);
 					}
 				}
 				else {
@@ -203,6 +205,7 @@ public class ModelData implements PersistentModel {
 			int codePostalUti = 0;
 			String villeUti = "";
 			String adresseUti = "";
+			String description = "";
 			
 			while(resRechArti.next()) {
 				idArti = resRechArti.getInt("IdArti");
@@ -217,8 +220,9 @@ public class ModelData implements PersistentModel {
 				codePostalUti = resRechArti.getInt("CodepostaleUti");
 				villeUti = resRechArti.getString("VilleUti");
 				adresseUti = resRechArti.getString("AdresseUti");
+				description = resRechArti.getString("Description");
 				
-				listeArti.add(new Artisan(idUti, mdpUti, typeUti, mailUti, telUti, codePostalUti, villeUti, adresseUti, idArti, denominationArti, secteurArti, numSiretArti));
+				listeArti.add(new Artisan(idUti, mdpUti, typeUti, mailUti, telUti, codePostalUti, villeUti, adresseUti, idArti, denominationArti, secteurArti, numSiretArti, description));
 			}
 			
 		} catch (Exception e) {
