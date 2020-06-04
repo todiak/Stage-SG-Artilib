@@ -43,7 +43,7 @@
                 %>
                 <div id="resultat">
             
-                    <a href="ProfilArtisan.jsp?<% out.println(idUti); %>" class="resume-art">
+                    <a href="ProfilArtisan.jsp?idUti=<% out.println(idUti); %>" class="resume-art">
                         <img class="img-res" src="./images/<% out.println(denominationArti); %>.jpg">
                         <ul>
                             <li><% out.println(denominationArti); %></li>

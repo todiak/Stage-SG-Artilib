@@ -37,7 +37,8 @@
          
           <div  class="container_image">  
             <a id="image-link" >
-          <img id="image_pro"  class="image_pro"  src="images/salon.jpg"  >
+            <!--  Jquery CDN-->
+          <img id="image_pro"  class="image_pro"  src="images/.jpg">
             </a>
           <div id="overlay" class="overlay">
             <a id="icon" class="icon" title="">
@@ -53,7 +54,8 @@
         </div>
 
           <div class="nom_profile">
-                <h1>MOUGNI Fahad</h1>
+                <h1>
+                </h1>
                 <p>Coiffeur</p>
             </div>
         
@@ -87,14 +89,12 @@
               <div class="premier-ancre" id="premier-ancre"></div>  
               <div class="essentiel-1">
                <h3 class="petit-titre"><i class="fas fa-euro-sign"></i>  Tarifs et remboursements</h3>
-               <p>Conventionné secteur 1</p>
-               <p>Carte bancaire non acceptée</p>
-               <p>Aucun remboursement en cas de coupe ratée</p><br>
+               <p>Prendre contact pour savoir les modalités de remboursement</p><br>
                <a href="#cinquieme-ancre">Voir les tarifs</a>
               </div>
               <div class="essentiel-2">
                 <h3 class="petit-titre"><i class="fa fa-credit-card" aria-hidden="true"></i> Moyens de paiment</h3>
-                <p>Chèques, espèces et ticket resto </p>
+                <p>Carte bancaire et espèces </p>
               </div>
             </div>
           
@@ -104,10 +104,7 @@
               <div class="carte">
                 <h3 class="grand-titre"><i class="fa fa-map-marker" aria-hidden="true"></i> Carte et informations d'accès</h3>
                 <p class="adresse">156 Avenue Victor Hugo, 93300 Aubervilliers</p><br>
-                <h4 class="petit-titre">Moyens de transport</h4>
-                <p>Bus - Mairie D'aubervilliers (ligne 35)</p>
-                <p>Bus - Villebois - Mareuil (ligne 35)</p>
-               </div>
+              </div>
               
                <div class="map_profile">
                
@@ -122,11 +119,6 @@
               <div class="presentation">
                 <h3 class="grand-titre"><i class="fas fa-align-left"></i> Présentation de l'artisan </h3>
                 <p class="text-presentation">Le Coiffeur accueille les enfants et les adultes pour tous types de soins capillaire  (coiffure, barbe , moustache, coloration). Il assure également un suivi des clients dans le temps et les oriente vers des  spécialistes en cas de calvitie.</p>
-                <hr class="m">
-              </div>
-              <div class="Expériences">
-               <h3 class="grand-titre"><i class="fas fa-award"></i> Expériences</h3>
-               <p><span class="gras">Depuis 2019</span> Salon de Coiffure - Aubervilliers</p> 
               </div>
             </div>
             
@@ -260,5 +252,9 @@
      
      
       <footer></footer>
+
 </body>
+
+<script src="./js/imageProfile.js" charset="UTF-8"></script>
+<script src="./js/header.js" charset="UTF-8"></script>
 </html>
