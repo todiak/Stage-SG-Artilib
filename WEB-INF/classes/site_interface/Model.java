@@ -25,6 +25,14 @@ public class Model {
 	public List<Utilisateur> rechercheArti(String localisation, String search) {
 		return this.data.rechercheArti(localisation, search);
 	}
+	
+	public List<Service> serviceArti(int idArti) {
+		return this.data.serviceArti(idArti);
+	}
+	
+	public Object[] horaireArti(int idArti) {
+		return this.data.horaireArti(idArti);
+	}
 
 	public static Model getInstance() {
 		return instance;

@@ -41,6 +41,5 @@ public class RechercheServlet extends HttpServlet {
 		//session.setAttribute(search, search);
 		
 		response.sendRedirect(request.getContextPath()+"/recherche.jsp"); //Page d'accueil pour bibliothecaire 
-
 	}
 }

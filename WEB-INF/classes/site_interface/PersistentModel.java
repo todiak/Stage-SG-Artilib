@@ -8,5 +8,7 @@ public interface PersistentModel {
 	boolean existUser(String mail);
 	void addUser(String type, Object...objects);
 	List<Utilisateur> rechercheArti(String localisation, String search);
+	List<Service> serviceArti(int idArti);
+	Object[] horaireArti(int idArti);
 }
    

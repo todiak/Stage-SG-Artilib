@@ -32,30 +32,35 @@
             List<Utilisateur> listeArti = new ArrayList<Utilisateur>();  
             listeArti = (ArrayList<Utilisateur>) session.getAttribute("listeArti");
             //listeArti = (ArrayList<Utilisateur>) Model.getInstance().rechercheArti((String)session.getAttribute("localisation"),(String)session.getAttribute("search"));
-
-            for (Utilisateur u : listeArti) {
-                int idUti = (int) u.data()[0];
-                String denominationArti = (String) u.data()[9];
-                int codePostaleUti = (int) u.data()[5];
-                String villeUti = (String) u.data()[6];
-                String adresseUti = (String) u.data()[7];
+            %>
+            <div id="resultat">
+                <%
+                    for (Utilisateur u : listeArti) {
+                        int idArti = (int) u.data()[8];
+                        String denominationArti = (String) u.data()[9];
+                        int codePostaleUti = (int) u.data()[5];
+                        String villeUti = (String) u.data()[6];
+                        String adresseUti = (String) u.data()[7];
 
                 %>
-                <div id="resultat">
+                
             
-                    <a href="ProfilArtisan.jsp?idUti=<% out.println(idUti); %>" class="resume-art">
-                        <img class="img-res" src="./images/<% out.println(denominationArti); %>.jpg">
-                        <ul>
-                            <li><% out.println(denominationArti); %></li>
-                            <li><% out.println(adresseUti); %></li>
-                            <li><% out.println(villeUti); %></li>
-                            <li><% out.println(codePostaleUti); %></li>
-                        </ul>
-                    </a>
-                </div>
+                <a href="DetailProfilServlet?idArti=<% out.println(idArti); %>" class="resume-art">
+                    <img class="img-res" src="./images/<% out.println(denominationArti); %>.jpg">
+                    <ul>
+                        <li><% out.println(denominationArti); %></li>
+                        <li><% out.println(adresseUti); %></li>
+                        <li><% out.println(villeUti); %></li>
+                        <li><% out.println(codePostaleUti); %></li>
+                    </ul>
+                </a>
+            
+
                 <%
             }
         %>
+
+        </div>
         
         
     </body>

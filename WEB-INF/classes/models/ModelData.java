@@ -8,6 +8,7 @@ import java.util.List;
 
 import site_interface.Model;
 import site_interface.PersistentModel;
+import site_interface.Service;
 import site_interface.Utilisateur;
 
 public class ModelData implements PersistentModel {
@@ -150,7 +151,6 @@ public class ModelData implements PersistentModel {
 				ResultSet resIdUser = stmtIdUser.executeQuery();
 				
 				if(resIdUser.next()) {
-					System.out.print(objects[5]);
 					
 					int idUser = resIdUser.getInt("IdUti");
 					
@@ -226,6 +226,72 @@ public class ModelData implements PersistentModel {
 		}
 		
 		return listeArti;
+	}
+
+	@Override
+	public List<Service> serviceArti(int idArti) {
+		List<Service> listeServiceArti = new ArrayList<Service>();
+		
+		String reqServiceArti = "SELECT * FROM service WHERE IdArti=?";
+		
+		try {
+			Connection conn = AccesBD.connexionBD();	// Connexion a la base de données
+			PreparedStatement stmtRechArti = conn.prepareStatement(reqServiceArti);
+			
+			// On affecte les paramètres de la requête
+			stmtRechArti.setInt(1, idArti);	
+			
+			ResultSet resRechArti = stmtRechArti.executeQuery();
+			
+			int idServ = 0;
+			String libServ = "";
+			double prixServ = 0.;
+			
+			while(resRechArti.next()) {
+				idServ = resRechArti.getInt("IdArti");
+				libServ = resRechArti.getString("libServ");
+				prixServ = resRechArti.getDouble("prixServ");
+
+				listeServiceArti.add(new ServiceArtisan(idServ, libServ, prixServ, idArti));
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return listeServiceArti;
+	}
+
+	@Override
+	public Object[] horaireArti(int idArti) {
+		Object[] lesHorairesArti = new Object[8];
+
+		String reqHoraireArti = "SELECT * FROM horaire WHERE IdArti=?";
+		
+		try {
+			Connection conn = AccesBD.connexionBD();	// Connexion a la base de données
+			PreparedStatement stmtRechArti = conn.prepareStatement(reqHoraireArti);
+			
+			// On affecte les paramètres de la requête
+			stmtRechArti.setInt(1, idArti);	
+
+			ResultSet resRechArti = stmtRechArti.executeQuery();
+			
+			if(resRechArti.next()) {
+				lesHorairesArti[0] = resRechArti.getString("Lundi");
+				lesHorairesArti[1] = resRechArti.getString("Mardi");
+				lesHorairesArti[2] = resRechArti.getString("Mercredi");
+				lesHorairesArti[3] = resRechArti.getString("Jeudi");
+				lesHorairesArti[4] = resRechArti.getString("Vendredi");
+				lesHorairesArti[5] = resRechArti.getString("Samedi");
+				lesHorairesArti[6] = resRechArti.getString("Dimanche");
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return lesHorairesArti;
 	}
 
 

@@ -1,5 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ page import ="site_interface.Service"%>
+<%@ page import ="site_interface.Utilisateur"%>
+<%@ page import ="java.util.ArrayList"%>
+<%@ page import ="java.util.List"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -28,6 +32,14 @@
     </script>
 </head>
 <body>
+  <% 
+    Utilisateur arti = (Utilisateur) session.getAttribute("ArtiClick");
+
+    List<Service> listeServiceArti = new ArrayList<Service>();  
+    listeServiceArti = (ArrayList<Service>) session.getAttribute("listeServiceArti");
+
+    Object[] lesHorairesArti = (Object[]) session.getAttribute("lesHorairesArti");
+  %>
       <header></header>
 
      <div class="vide">
@@ -55,8 +67,18 @@
 
           <div class="nom_profile">
                 <h1>
+                  <% 
+                    String denominateurArti = (String) arti.data()[9];
+                    out.print(denominateurArti);
+                  %>
                 </h1>
-                <p>Coiffeur</p>
+                
+                <p>
+                  <% 
+                    String secteurArti = (String) arti.data()[10];
+                    out.print(secteurArti);
+                  %>
+                </p>
             </div>
         
         </div>
@@ -103,7 +125,14 @@
               
               <div class="carte">
                 <h3 class="grand-titre"><i class="fa fa-map-marker" aria-hidden="true"></i> Carte et informations d'accès</h3>
-                <p class="adresse">156 Avenue Victor Hugo, 93300 Aubervilliers</p><br>
+                <p class="adresse">
+                  <% 
+                    int cpUti = (int) arti.data()[5];
+                    String villeUti = (String) arti.data()[6];
+                    String adresseUti = (String) arti.data()[7];
+                    out.print(adresseUti+ ", " + cpUti + ' ' +villeUti);
+                  %>
+                </p><br>
               </div>
               
                <div class="map_profile">
@@ -118,7 +147,11 @@
               <div class="troisieme-ancre" id="troisieme-ancre"></div>
               <div class="presentation">
                 <h3 class="grand-titre"><i class="fas fa-align-left"></i> Présentation de l'artisan </h3>
-                <p class="text-presentation">Le Coiffeur accueille les enfants et les adultes pour tous types de soins capillaire  (coiffure, barbe , moustache, coloration). Il assure également un suivi des clients dans le temps et les oriente vers des  spécialistes en cas de calvitie.</p>
+                <p class="text-presentation">
+                  <% 
+                    //a remplir
+                  %>
+                </p>
               </div>
             </div>
             
@@ -129,16 +162,24 @@
               </div>
               <div class="ouverture-contact">
                 <div class="ouverture">
-               <h3 class="petit-titre">Ouverture</h3>
-               <p>Lundi : 08h30 - 17h00</p>
-               <p>Mardi : 08h30 - 17h00</p>
-               <p>Mercredi : 08h30 - 17h00</p>
-               <p>Jeudi : 08h30 - 17h00</p>
-               <p>Vendredi : 08h30 - 17h00</p>
-              </div>
+                 <h3 class="petit-titre">Ouverture</h3> 
+
+                 <p>Lundi : <% out.print((String)lesHorairesArti[0]); %></p>
+                 <p>Mardi : <% out.print(lesHorairesArti[1]); %></p>
+                 <p>Mercredi : <% out.print(lesHorairesArti[2]); %></p>
+                 <p>Jeudi : <% out.print(lesHorairesArti[3]); %></p>
+                 <p>Vendredi : <% out.print(lesHorairesArti[4]); %></p>
+                 <p>Samedi : <% out.print(lesHorairesArti[5]); %></p>
+                 <p>Dimanche : <% out.print(lesHorairesArti[6]); %></p>
+                </div>
               <div class="contact">
                 <h3 class="petit-titre">Contact</h3>
-                <p>01 43 52 21 07</p>
+                <p>
+                  <% 
+                    int telUti = (int) arti.data()[4];
+                    out.print(telUti);
+                  %>
+                </p>
               </div>
               </div>
               
@@ -149,11 +190,20 @@
               <div class="tarifs">
                 <h3 class="grand-titre"><i class="fas fa-euro-sign"></i> Tarifs</h3>
                 <hr class="m"><br>
-                <div class="div-tarifs">
-                  <p class="type-tarifs">Coiffure + Barbe </p>
-                  <p class="prix-tarifs"> <span class="gras">25 €</span></p>
-                </div>
                 
+                <%
+                  for (Service s : listeServiceArti) {
+                    String libServ = (String) s.data()[1];
+                    double prixServ = (double) s.data()[2];
+                %>
+                  <div class="div-tarifs">
+
+                  <p class="type-tarifs"> <% out.print(libServ); %> </p>
+                  <p class="prix-tarifs"> <span class="gras"><% out.print(prixServ + "€"); %></span></p>
+                  
+                  </div>
+                
+                <% } %>
               </div>
             </div>
           </div>
