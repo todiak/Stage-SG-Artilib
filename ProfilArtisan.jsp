@@ -37,8 +37,12 @@
          
           <div  class="container_image">  
             <a id="image-link" >
+<<<<<<< HEAD
             <!--  Jquery CDN-->
           <img id="image_pro"  class="image_pro"  src="images/.jpg">
+=======
+          <img id="image_pro"  class="image_pro"  src="images/salon.jpg"  >
+>>>>>>> 6715e862a4290f9a1ff25b586a21b9a6e49880f9
             </a>
           <div id="overlay" class="overlay">
             <a id="icon" class="icon" title="">
@@ -54,8 +58,12 @@
         </div>
 
           <div class="nom_profile">
+<<<<<<< HEAD
                 <h1>
                 </h1>
+=======
+                <h1>MOUGNI Fahad</h1>
+>>>>>>> 6715e862a4290f9a1ff25b586a21b9a6e49880f9
                 <p>Coiffeur</p>
             </div>
         
@@ -89,12 +97,22 @@
               <div class="premier-ancre" id="premier-ancre"></div>  
               <div class="essentiel-1">
                <h3 class="petit-titre"><i class="fas fa-euro-sign"></i>  Tarifs et remboursements</h3>
+<<<<<<< HEAD
                <p>Prendre contact pour savoir les modalités de remboursement</p><br>
+=======
+               <p>Conventionné secteur 1</p>
+               <p>Carte bancaire non acceptée</p>
+               <p>Aucun remboursement en cas de coupe ratée</p><br>
+>>>>>>> 6715e862a4290f9a1ff25b586a21b9a6e49880f9
                <a href="#cinquieme-ancre">Voir les tarifs</a>
               </div>
               <div class="essentiel-2">
                 <h3 class="petit-titre"><i class="fa fa-credit-card" aria-hidden="true"></i> Moyens de paiment</h3>
+<<<<<<< HEAD
                 <p>Carte bancaire et espèces </p>
+=======
+                <p>Chèques, espèces et ticket resto </p>
+>>>>>>> 6715e862a4290f9a1ff25b586a21b9a6e49880f9
               </div>
             </div>
           
@@ -104,7 +122,14 @@
               <div class="carte">
                 <h3 class="grand-titre"><i class="fa fa-map-marker" aria-hidden="true"></i> Carte et informations d'accès</h3>
                 <p class="adresse">156 Avenue Victor Hugo, 93300 Aubervilliers</p><br>
+<<<<<<< HEAD
               </div>
+=======
+                <h4 class="petit-titre">Moyens de transport</h4>
+                <p>Bus - Mairie D'aubervilliers (ligne 35)</p>
+                <p>Bus - Villebois - Mareuil (ligne 35)</p>
+               </div>
+>>>>>>> 6715e862a4290f9a1ff25b586a21b9a6e49880f9
               
                <div class="map_profile">
                
@@ -119,6 +144,14 @@
               <div class="presentation">
                 <h3 class="grand-titre"><i class="fas fa-align-left"></i> Présentation de l'artisan </h3>
                 <p class="text-presentation">Le Coiffeur accueille les enfants et les adultes pour tous types de soins capillaire  (coiffure, barbe , moustache, coloration). Il assure également un suivi des clients dans le temps et les oriente vers des  spécialistes en cas de calvitie.</p>
+<<<<<<< HEAD
+=======
+                <hr class="m">
+              </div>
+              <div class="Expériences">
+               <h3 class="grand-titre"><i class="fas fa-award"></i> Expériences</h3>
+               <p><span class="gras">Depuis 2019</span> Salon de Coiffure - Aubervilliers</p> 
+>>>>>>> 6715e862a4290f9a1ff25b586a21b9a6e49880f9
               </div>
             </div>
             
@@ -252,9 +285,13 @@
      
      
       <footer></footer>
+<<<<<<< HEAD
 
 </body>
 
 <script src="./js/imageProfile.js" charset="UTF-8"></script>
 <script src="./js/header.js" charset="UTF-8"></script>
+=======
+</body>
+>>>>>>> 6715e862a4290f9a1ff25b586a21b9a6e49880f9
 </html>

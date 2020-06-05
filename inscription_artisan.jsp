@@ -23,7 +23,7 @@
         <div class="form-inscription-artisan">
         
             <form class="inscrire" method="post" action="">
-                <label id="title">Nouveau sur Artilib ?</label>
+                <label id="title">Rejoignez nos artisans</label>
 
                 <label> <input type="text" name="" placeholder="Adresse email" > * </label>
                 <label> <input type="text" name="" placeholder="Mot de passe"> * </label>
@@ -47,7 +47,7 @@
                 </label>
 
 
-                <input type="submit" id="sub" value="Valider">
+                <input type="submit" id="sub" value="Soumettre">
 
                 <label id=connecter>
                     Déjà Inscris? 

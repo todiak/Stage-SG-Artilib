@@ -31,7 +31,7 @@ public class RechercheServlet extends HttpServlet {
 		}
 		catch(Exception e) {
 			e.printStackTrace();
-		}
+		} 
 		
 		List<Utilisateur> listeArti = Model.getInstance().rechercheArti(localisation,search);
 			
