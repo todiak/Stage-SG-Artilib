@@ -1,5 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ page import ="site_interface.Service"%>
+<%@ page import ="site_interface.Utilisateur"%>
+<%@ page import ="java.util.ArrayList"%>
+<%@ page import ="java.util.List"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -17,9 +21,15 @@
      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
      
 
-      <!--  Jquery CDN-->
+      <!--  Jquery CDN -->
       <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	  
+	  <!-- IMPORT THE HLS.JS LIBRARY --> 
+      <script src="https://cdn.jsdelivr.net/npm/hls.js@0.13.2/dist/hls.min.js"></script>
+	  <!-- IMPORT THE PLAYER.JS WEBCOMPONENT --> 
+	  <script src="./js/player.js"></script>
+	  
       <script> 
         $(function(){
             $("header").load("./header.jsp"); 
@@ -28,6 +38,14 @@
     </script>
 </head>
 <body>
+  <% 
+    Utilisateur arti = (Utilisateur) session.getAttribute("ArtiClick");
+
+    List<Service> listeServiceArti = new ArrayList<Service>();  
+    listeServiceArti = (ArrayList<Service>) session.getAttribute("listeServiceArti");
+
+    Object[] lesHorairesArti = (Object[]) session.getAttribute("lesHorairesArti");
+  %>
       <header></header>
 
      <div class="vide">
@@ -37,7 +55,10 @@
          
           <div  class="container_image">  
             <a id="image-link" >
-          <img id="image_pro"  class="image_pro"  src="images/salon.jpg"  >
+            <!--  Jquery CDN-->
+			
+			<% String denominationArti = (String) arti.data()[9]; %>
+          <img id="image_pro" class="image_pro" src="./images/<% out.println(denominationArti); %>.jpg">
             </a>
           <div id="overlay" class="overlay">
             <a id="icon" class="icon" title="">
@@ -53,8 +74,18 @@
         </div>
 
           <div class="nom_profile">
-                <h1>MOUGNI Fahad</h1>
-                <p>Coiffeur</p>
+                <h1>
+                  <% 
+                    out.print(denominationArti);
+                  %>
+                </h1>
+                
+                <p>
+                  <% 
+                    String secteurArti = (String) arti.data()[10];
+                    out.print(secteurArti);
+                  %>
+                </p>
             </div>
         
         </div>
@@ -81,20 +112,17 @@
 
           
           <div class="middle-profil-gauche">
-          
-            
+		  
             <div class="premier-carre">
               <div class="premier-ancre" id="premier-ancre"></div>  
               <div class="essentiel-1">
                <h3 class="petit-titre"><i class="fas fa-euro-sign"></i>  Tarifs et remboursements</h3>
-               <p>Conventionné secteur 1</p>
-               <p>Carte bancaire non acceptée</p>
-               <p>Aucun remboursement en cas de coupe ratée</p><br>
+               <p>Prendre contact pour savoir les modalités de remboursement</p><br>
                <a href="#cinquieme-ancre">Voir les tarifs</a>
               </div>
               <div class="essentiel-2">
                 <h3 class="petit-titre"><i class="fa fa-credit-card" aria-hidden="true"></i> Moyens de paiment</h3>
-                <p>Chèques, espèces et ticket resto </p>
+                <p>Carte bancaire et espèces </p>
               </div>
             </div>
           
@@ -103,11 +131,15 @@
               
               <div class="carte">
                 <h3 class="grand-titre"><i class="fa fa-map-marker" aria-hidden="true"></i> Carte et informations d'accès</h3>
-                <p class="adresse">156 Avenue Victor Hugo, 93300 Aubervilliers</p><br>
-                <h4 class="petit-titre">Moyens de transport</h4>
-                <p>Bus - Mairie D'aubervilliers (ligne 35)</p>
-                <p>Bus - Villebois - Mareuil (ligne 35)</p>
-               </div>
+                <p class="adresse">
+                  <% 
+                    int cpUti = (int) arti.data()[5];
+                    String villeUti = (String) arti.data()[6];
+                    String adresseUti = (String) arti.data()[7];
+                    out.print(adresseUti+ ", " + cpUti + ' ' +villeUti);
+                  %>
+                </p><br>
+              </div>
               
                <div class="map_profile">
                
@@ -121,13 +153,31 @@
               <div class="troisieme-ancre" id="troisieme-ancre"></div>
               <div class="presentation">
                 <h3 class="grand-titre"><i class="fas fa-align-left"></i> Présentation de l'artisan </h3>
-                <p class="text-presentation">Le Coiffeur accueille les enfants et les adultes pour tous types de soins capillaire  (coiffure, barbe , moustache, coloration). Il assure également un suivi des clients dans le temps et les oriente vers des  spécialistes en cas de calvitie.</p>
-                <hr class="m">
+                <p class="text-presentation">
+                  <% 
+                    String description = (String) arti.data()[12];
+					out.print(description);
+                  %>
+                </p>
+				
+				<div class="video-carre">
+			
+				
+				<player-videostreaming
+				
+					id="video-presentation" 
+					url="http://localhost:8080/Site-SG/videos/salon.m3u8"
+					widthChoice="100%"
+					heightChoice="300"
+					backgroundColor="#000"
+				>
+				</player-videostreaming>
+				
+				</div>
               </div>
-              <div class="Expériences">
-               <h3 class="grand-titre"><i class="fas fa-award"></i> Expériences</h3>
-               <p><span class="gras">Depuis 2019</span> Salon de Coiffure - Aubervilliers</p> 
-              </div>
+			  
+			  
+			
             </div>
             
             <div  class="quatrieme-carre">
@@ -137,16 +187,24 @@
               </div>
               <div class="ouverture-contact">
                 <div class="ouverture">
-               <h3 class="petit-titre">Ouverture</h3>
-               <p>Lundi : 08h30 - 17h00</p>
-               <p>Mardi : 08h30 - 17h00</p>
-               <p>Mercredi : 08h30 - 17h00</p>
-               <p>Jeudi : 08h30 - 17h00</p>
-               <p>Vendredi : 08h30 - 17h00</p>
-              </div>
+                 <h3 class="petit-titre">Ouverture</h3> 
+
+                 <p>Lundi : <% out.print((String)lesHorairesArti[0]); %></p>
+                 <p>Mardi : <% out.print(lesHorairesArti[1]); %></p>
+                 <p>Mercredi : <% out.print(lesHorairesArti[2]); %></p>
+                 <p>Jeudi : <% out.print(lesHorairesArti[3]); %></p>
+                 <p>Vendredi : <% out.print(lesHorairesArti[4]); %></p>
+                 <p>Samedi : <% out.print(lesHorairesArti[5]); %></p>
+                 <p>Dimanche : <% out.print(lesHorairesArti[6]); %></p>
+                </div>
               <div class="contact">
                 <h3 class="petit-titre">Contact</h3>
-                <p>01 43 52 21 07</p>
+                <p>
+                  <% 
+                    int telUti = (int) arti.data()[4];
+                    out.print(telUti);
+                  %>
+                </p>
               </div>
               </div>
               
@@ -157,11 +215,20 @@
               <div class="tarifs">
                 <h3 class="grand-titre"><i class="fas fa-euro-sign"></i> Tarifs</h3>
                 <hr class="m"><br>
-                <div class="div-tarifs">
-                  <p class="type-tarifs">Coiffure + Barbe </p>
-                  <p class="prix-tarifs"> <span class="gras">25 €</span></p>
-                </div>
                 
+                <%
+                  for (Service s : listeServiceArti) {
+                    String libServ = (String) s.data()[1];
+                    double prixServ = (double) s.data()[2];
+                %>
+                  <div class="div-tarifs">
+
+                  <p class="type-tarifs"> <% out.print(libServ); %> </p>
+                  <p class="prix-tarifs"> <span class="gras"><% out.print(prixServ + "€"); %></span></p>
+                  
+                  </div>
+                
+                <% } %>
               </div>
             </div>
           </div>
@@ -249,6 +316,8 @@
             
           
             </div>
+			
+			
 
 
           </div>
@@ -260,5 +329,9 @@
      
      
       <footer></footer>
+
 </body>
+
+<script src="./js/imageProfile.js" charset="UTF-8"></script>
+<script src="./js/header.js" charset="UTF-8"></script>
 </html>

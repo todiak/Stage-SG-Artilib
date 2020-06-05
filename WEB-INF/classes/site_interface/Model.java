@@ -1,4 +1,5 @@
 package site_interface;
+import java.util.List;
 
 public class Model {
 
@@ -19,6 +20,18 @@ public class Model {
 	
 	public void addUser(String type, Object...objects) {
 		this.data.addUser(type, objects);
+	}
+	
+	public List<Utilisateur> rechercheArti(String localisation, String search) {
+		return this.data.rechercheArti(localisation, search);
+	}
+	
+	public List<Service> serviceArti(int idArti) {
+		return this.data.serviceArti(idArti);
+	}
+	
+	public Object[] horaireArti(int idArti) {
+		return this.data.horaireArti(idArti);
 	}
 
 	public static Model getInstance() {

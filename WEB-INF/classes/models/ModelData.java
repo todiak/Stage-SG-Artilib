@@ -3,9 +3,12 @@ package models;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.List;
 
 import site_interface.Model;
 import site_interface.PersistentModel;
+import site_interface.Service;
 import site_interface.Utilisateur;
 
 public class ModelData implements PersistentModel {
@@ -46,6 +49,7 @@ public class ModelData implements PersistentModel {
 				String villeUtilisateur = resUser.getString("VilleUti");
 				String adresseUtilisateur = resUser.getString("AdresseUti");
 				
+				
 				if(typeUtilisateur.equals("arti")) {
 					String reqGetArtisan = "SELECT * FROM artisan WHERE IdUti = ? ";
 					
@@ -60,9 +64,10 @@ public class ModelData implements PersistentModel {
 						String denominationEntrepriseArtisan = resArtisan.getString("DenominationEntrepriseArti");
 						String secteurArtisan = resArtisan.getString("SecteurArti");
 						String numSiretArtisan = resArtisan.getString("NumSiretArti");
+						String description = resUser.getString("Description");
 						
 						return new Artisan(idUtilisateur, mdpUtilisateur, typeUtilisateur, mailUtilisateur, telUtilisateur, codePostalUtilisateur,
-								villeUtilisateur, adresseUtilisateur, idArtisan, denominationEntrepriseArtisan, secteurArtisan, numSiretArtisan);
+								villeUtilisateur, adresseUtilisateur, idArtisan, denominationEntrepriseArtisan, secteurArtisan, numSiretArtisan, description);
 					}
 				}
 				else {
@@ -148,7 +153,6 @@ public class ModelData implements PersistentModel {
 				ResultSet resIdUser = stmtIdUser.executeQuery();
 				
 				if(resIdUser.next()) {
-					System.out.print(objects[5]);
 					
 					int idUser = resIdUser.getInt("IdUti");
 					
@@ -169,7 +173,130 @@ public class ModelData implements PersistentModel {
 		}
 	}
 	
-	
+	@Override
+	public List<Utilisateur> rechercheArti(String localisation, String search) {
+		List<Utilisateur> listeArti = new ArrayList<Utilisateur>();
+		
+		String reqRechArti = "SELECT * FROM artisan INNER JOIN utilisateur ON artisan.IdUti = utilisateur.IdUti WHERE (artisan.DenominationEntrepriseArti LIKE ? OR artisan.SecteurArti LIKE ?) AND (utilisateur.CodepostaleUti LIKE ? OR utilisateur.VilleUti LIKE ? OR utilisateur.AdresseUti LIKE ?)";
+
+		
+		try {
+			Connection conn = AccesBD.connexionBD();	// Connexion a la base de données
+			PreparedStatement stmtRechArti = conn.prepareStatement(reqRechArti);
+			
+			// On affecte les paramètres de la requête
+			stmtRechArti.setString(1, "%" + localisation + "%");	
+			stmtRechArti.setString(2, "%" + localisation + "%");
+			stmtRechArti.setString(3, "%" + search + "%");
+			stmtRechArti.setString(4, "%" + search + "%");
+			stmtRechArti.setString(5, "%" + search + "%");
+			
+			ResultSet resRechArti = stmtRechArti.executeQuery();
+			
+			int idArti = 0;
+			String denominationArti = "";
+			String secteurArti = "";
+			String numSiretArti = "";
+			int idUti = 0;
+			String mdpUti = "";
+			String typeUti = "";
+			String mailUti = "";
+			int telUti = 0;
+			int codePostalUti = 0;
+			String villeUti = "";
+			String adresseUti = "";
+			String description = "";
+			
+			while(resRechArti.next()) {
+				idArti = resRechArti.getInt("IdArti");
+				denominationArti = resRechArti.getString("DenominationEntrepriseArti");
+				secteurArti = resRechArti.getString("SecteurArti");
+				numSiretArti = resRechArti.getString("NumSiretArti");
+				idUti = resRechArti.getInt("IdUti");
+				mdpUti = resRechArti.getString("MdpUti");
+				typeUti = resRechArti.getString("TypeUti");
+				mailUti = resRechArti.getString("MailUti");
+				telUti = resRechArti.getInt("TelUti");
+				codePostalUti = resRechArti.getInt("CodepostaleUti");
+				villeUti = resRechArti.getString("VilleUti");
+				adresseUti = resRechArti.getString("AdresseUti");
+				description = resRechArti.getString("Description");
+				
+				listeArti.add(new Artisan(idUti, mdpUti, typeUti, mailUti, telUti, codePostalUti, villeUti, adresseUti, idArti, denominationArti, secteurArti, numSiretArti, description));
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return listeArti;
+	}
+
+	@Override
+	public List<Service> serviceArti(int idArti) {
+		List<Service> listeServiceArti = new ArrayList<Service>();
+		
+		String reqServiceArti = "SELECT * FROM service WHERE IdArti=?";
+		
+		try {
+			Connection conn = AccesBD.connexionBD();	// Connexion a la base de données
+			PreparedStatement stmtRechArti = conn.prepareStatement(reqServiceArti);
+			
+			// On affecte les paramètres de la requête
+			stmtRechArti.setInt(1, idArti);	
+			
+			ResultSet resRechArti = stmtRechArti.executeQuery();
+			
+			int idServ = 0;
+			String libServ = "";
+			double prixServ = 0.;
+			
+			while(resRechArti.next()) {
+				idServ = resRechArti.getInt("IdArti");
+				libServ = resRechArti.getString("libServ");
+				prixServ = resRechArti.getDouble("prixServ");
+
+				listeServiceArti.add(new ServiceArtisan(idServ, libServ, prixServ, idArti));
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return listeServiceArti;
+	}
+
+	@Override
+	public Object[] horaireArti(int idArti) {
+		Object[] lesHorairesArti = new Object[8];
+
+		String reqHoraireArti = "SELECT * FROM horaire WHERE IdArti=?";
+		
+		try {
+			Connection conn = AccesBD.connexionBD();	// Connexion a la base de données
+			PreparedStatement stmtRechArti = conn.prepareStatement(reqHoraireArti);
+			
+			// On affecte les paramètres de la requête
+			stmtRechArti.setInt(1, idArti);	
+
+			ResultSet resRechArti = stmtRechArti.executeQuery();
+			
+			if(resRechArti.next()) {
+				lesHorairesArti[0] = resRechArti.getString("Lundi");
+				lesHorairesArti[1] = resRechArti.getString("Mardi");
+				lesHorairesArti[2] = resRechArti.getString("Mercredi");
+				lesHorairesArti[3] = resRechArti.getString("Jeudi");
+				lesHorairesArti[4] = resRechArti.getString("Vendredi");
+				lesHorairesArti[5] = resRechArti.getString("Samedi");
+				lesHorairesArti[6] = resRechArti.getString("Dimanche");
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return lesHorairesArti;
+	}
 
 
 }

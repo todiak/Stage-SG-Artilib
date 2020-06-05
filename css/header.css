@@ -13,8 +13,11 @@
 
 .menu-left {
 	float : left;
+	height:67px; 
+	
    
 }
+
 
 .menu-left h1 .menu-logo {
 	position: relative;
@@ -25,6 +28,7 @@
 
 .menu-right, .menu-user {
   float: right;
+    z-index: 3000;
 }
 
 .menu-right ul, .menu-user ul {
