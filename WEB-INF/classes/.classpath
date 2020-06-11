@@ -4,5 +4,7 @@
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry kind="lib" path="C:/apache-tomcat-9.0.14/apache-tomcat-9.0.14/webapps/Site-SG/WEB-INF/lib/mysql-connector-java-5.1.48.jar"/>
 	<classpathentry kind="lib" path="C:/apache-tomcat-9.0.14/apache-tomcat-9.0.14/lib/servlet-api.jar"/>
+	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.web.container"/>
+	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.module.container"/>
 	<classpathentry kind="output" path=""/>
 </classpath>
